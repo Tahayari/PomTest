@@ -6,7 +6,7 @@
       <class name="test.PomDemoTest">
         <methods>
           <include name="afterTest"/>
-          <include name="testLogin"/>
+          <include name="postpaidLogin"/>
           <include name="setup"/>
         </methods>
       </class> <!-- test.PomDemoTest -->
