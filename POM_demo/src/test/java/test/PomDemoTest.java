@@ -5,13 +5,13 @@ import org.testng.annotations.BeforeTest;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 
-import java.util.concurrent.TimeUnit;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-import pages.AuthenticationPage;
-import pages.PostpaidDashboard;
+//import pages.*;
+
+import pageFactory.AuthenticationPage;
+import pageFactory.PostpaidDashboard;
 
 public class PomDemoTest {
 
@@ -27,14 +27,13 @@ public class PomDemoTest {
 		System.setProperty("webdriver.chrome.driver",projectLocation+"\\driver\\chromedriver\\chromedriver.exe");
 
 		driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
 		driver.get("https://vodafone.ro/autentificare");
 	}
 
 
 	@Test(priority=0)
-	public void testLogin() {
+	public void postpaidLogin() {
 
 		//Create Login page object
 		objAuthPage = new AuthenticationPage(driver);
@@ -44,9 +43,7 @@ public class PomDemoTest {
 
 		objPostpaidPage = new PostpaidDashboard(driver);
 
-		Assert.assertTrue(objPostpaidPage.getFacturaPortlet().toLowerCase().contains("factura mea"));
-
-
+		Assert.assertTrue(objPostpaidPage.getPostpaidDashboardElem(), "Dashboardul NU s-a incarcat cu success"); 
 	}
 
 
