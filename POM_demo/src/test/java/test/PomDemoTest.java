@@ -14,12 +14,14 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import config.PropertiesFile;
 import pageFactory.AuthenticationPage;
 import pageFactory.PostpaidDashboard;
+import pageFactory.FirstPage;
 
 public class PomDemoTest {
 
 	WebDriver driver = null ;
 	AuthenticationPage objAuthPage ;
 	PostpaidDashboard objPostpaidPage ;
+	FirstPage objFirstPage;
 	PropertiesFile prop = new PropertiesFile();
 
 	@BeforeTest
@@ -42,11 +44,11 @@ public class PomDemoTest {
 		}
 		else System.out.println("Nu este definit OK browserul");
 
-		driver.get("https://vodafone.ro/autentificare");
+		driver.get("https://www.vodafone.ro/personal/campanii/superoferte-online/index.htm");
 	}
 
 
-	@Test(priority=0)
+	@Test(enabled=false)
 	public void postpaidLogin() {
 
 		//Create Login page object
@@ -60,10 +62,20 @@ public class PomDemoTest {
 		Assert.assertTrue(objPostpaidPage.getPostpaidDashboardElem(), "Dashboardul NU s-a incarcat cu success"); 
 	}
 
+	@Test
+	public void LoginDinPrimaPagina() {
+		//Create Login page object
+		objFirstPage = new FirstPage(driver);
+		
+		//Login
+		objFirstPage.BeginLogin(prop.getPostpaid_username(),prop.getPostpaid_password());
+	}
+
 
 	@AfterTest
 	public void afterTest() {
-		driver.close();
+		//driver.close();
+		System.out.println("Testul s-a incheiat!");
 	}
 
 }
