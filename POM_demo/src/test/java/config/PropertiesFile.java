@@ -38,5 +38,9 @@ public class PropertiesFile {
 	public String getPostpaid_password(){
 		return prop.getProperty("postpaid_password");
 	}
+	
+	public String getURL() {
+		return prop.getProperty("URL");
+	}
 
 }

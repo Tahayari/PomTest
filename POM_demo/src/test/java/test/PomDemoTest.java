@@ -3,9 +3,10 @@ package test;
 import java.io.IOException;
 
 import org.testng.annotations.Test;
-import org.testng.annotations.BeforeTest;
+
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -20,11 +21,11 @@ public class PomDemoTest {
 
 	WebDriver driver = null ;
 	AuthenticationPage objAuthPage ;
-	PostpaidDashboard objPostpaidPage ;
+	PostpaidDashboard objPostpaidDashboard ;
 	FirstPage objFirstPage;
 	PropertiesFile prop = new PropertiesFile();
 
-	@BeforeTest
+	@BeforeMethod
 	public void setup() throws IOException {
 
 
@@ -44,38 +45,46 @@ public class PomDemoTest {
 		}
 		else System.out.println("Nu este definit OK browserul");
 
-		driver.get("https://www.vodafone.ro/personal/campanii/superoferte-online/index.htm");
+		driver.get(prop.getURL());
 	}
 
 
-	@Test(enabled=false)
+	@Test
 	public void postpaidLogin() {
-
+		
+		driver.get("https://vodafone.ro/autentificare");
+		
 		//Create Login page object
 		objAuthPage = new AuthenticationPage(driver);
 
 		//Login
 		objAuthPage.login(prop.getPostpaid_username(), prop.getPostpaid_password());
+		
+		//Create Postpaid Dashboard page object
+		objPostpaidDashboard = new PostpaidDashboard(driver);
 
-		objPostpaidPage = new PostpaidDashboard(driver);
-
-		Assert.assertTrue(objPostpaidPage.getPostpaidDashboardElem(), "Dashboardul NU s-a incarcat cu success"); 
+		Assert.assertEquals("Abonamentul meu",objPostpaidDashboard.getPostpaidDashboardElem());
 	}
 
-	@Test
+	@Test(enabled=false)
 	public void LoginDinPrimaPagina() {
 		//Create Login page object
 		objFirstPage = new FirstPage(driver);
 		
 		//Login
 		objFirstPage.BeginLogin(prop.getPostpaid_username(),prop.getPostpaid_password());
+		
+		//Create Postpaid Dashboard page object
+		objPostpaidDashboard = new PostpaidDashboard(driver);
+
+		Assert.assertEquals("Abonamentul meu",objPostpaidDashboard.getPostpaidDashboardElem());
 	}
 
 
-	@AfterTest
+	@AfterMethod
 	public void afterTest() {
-		//driver.close();
-		System.out.println("Testul s-a incheiat!");
+		driver.close();
+		System.out.println("Testele s-au incheiat!");
 	}
 
 }

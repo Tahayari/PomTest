@@ -10,7 +10,7 @@ public class PostpaidDashboard {
 
 	WebDriver driver = null ;
 	
-	@FindBy(xpath="//a[@href='https://www.vodafone.ro/vfrointegration/appmanager/vfroportal/myvodafone?_nfpb=true&_nfxr=false&_pageLabel=cost-control'][contains(text(),'Serviciile tale')]") 
+	@FindBy(xpath="//span[contains(text(),'Abonamentul meu')]") WebElement AbonamentlMeu ;
 	WebElement serviciileTale_btn;
 	
 	public PostpaidDashboard (WebDriver driver) {
@@ -19,10 +19,8 @@ public class PostpaidDashboard {
 		PageFactory.initElements(factory, this);
 	}
 	
-	public boolean getPostpaidDashboardElem() {
-		System.out.println("Verify if dashboard has loaded");
-		
-		return serviciileTale_btn.isDisplayed();
+	public String getPostpaidDashboardElem() {
+		return AbonamentlMeu.getText();
 		
 	}
 	
