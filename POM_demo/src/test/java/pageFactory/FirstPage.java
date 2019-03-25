@@ -44,6 +44,8 @@ public class FirstPage {
 		
 		//Click on Login Button
 		act.moveToElement(driver.findElement(By.xpath("//label[@for='login-name']//following::button"))).click().perform();
+		
+		
 	}
 
 }

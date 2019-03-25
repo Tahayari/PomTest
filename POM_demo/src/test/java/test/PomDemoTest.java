@@ -5,8 +5,7 @@ import java.io.IOException;
 import org.testng.annotations.Test;
 
 import org.testng.Assert;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.*;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -25,7 +24,7 @@ public class PomDemoTest {
 	FirstPage objFirstPage;
 	PropertiesFile prop = new PropertiesFile();
 
-	@BeforeMethod
+	@BeforeTest
 	public void setup() throws IOException {
 
 
@@ -43,37 +42,37 @@ public class PomDemoTest {
 			System.setProperty("webdriver.chrome.driver",projectLocation+"/driver/chromedriver/chromedriver.exe");
 			driver = new ChromeDriver();
 		}
-		else System.out.println("Nu este definit OK browserul");
-
+		else System.out.println("Invalid browser defined in config.properties");
 		driver.get(prop.getURL());
+
 	}
 
 
-	@Test
+	@Test(priority=1)
 	public void postpaidLogin() {
-		
+
 		driver.get("https://vodafone.ro/autentificare");
-		
+
 		//Create Login page object
 		objAuthPage = new AuthenticationPage(driver);
 
 		//Login
 		objAuthPage.login(prop.getPostpaid_username(), prop.getPostpaid_password());
-		
+
 		//Create Postpaid Dashboard page object
 		objPostpaidDashboard = new PostpaidDashboard(driver);
 
 		Assert.assertEquals("Abonamentul meu",objPostpaidDashboard.getPostpaidDashboardElem());
 	}
 
-	@Test(enabled=false)
-	public void LoginDinPrimaPagina() {
+	@Test(priority=0)
+	public void HomepagePostpaidLogin() {
 		//Create Login page object
 		objFirstPage = new FirstPage(driver);
-		
+
 		//Login
 		objFirstPage.BeginLogin(prop.getPostpaid_username(),prop.getPostpaid_password());
-		
+
 		//Create Postpaid Dashboard page object
 		objPostpaidDashboard = new PostpaidDashboard(driver);
 
@@ -82,6 +81,17 @@ public class PomDemoTest {
 
 
 	@AfterMethod
+	public void Logout(){
+		//Create Postpaid Dashboard page object
+		objPostpaidDashboard = new PostpaidDashboard(driver);
+		//Create Login page object
+		objFirstPage = new FirstPage(driver);
+		objPostpaidDashboard.Logout();
+		driver.get(prop.getURL());
+		
+	}
+
+	@AfterTest
 	public void afterTest() {
 		driver.close();
 		System.out.println("Testele s-au incheiat!");
