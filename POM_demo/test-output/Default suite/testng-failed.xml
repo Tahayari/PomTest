@@ -5,6 +5,8 @@
     <classes>
       <class name="test.PomDemoTest">
         <methods>
+          <include name="Logout"/>
+          <include name="HomepagePostpaidLogin"/>
           <include name="afterTest"/>
           <include name="postpaidLogin"/>
           <include name="setup"/>

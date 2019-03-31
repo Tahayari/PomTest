@@ -1,21 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="1" total="2" passed="1">
+<testng-results skipped="0" failed="0" ignored="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="23082" started-at="2019-03-24T17:23:01Z" finished-at="2019-03-24T17:23:24Z">
+  <suite name="Default suite" duration-ms="62776" started-at="2019-03-29T07:35:20Z" finished-at="2019-03-29T07:36:22Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="23082" started-at="2019-03-24T17:23:01Z" finished-at="2019-03-24T17:23:24Z">
+    <test name="Default test" duration-ms="62776" started-at="2019-03-29T07:35:20Z" finished-at="2019-03-29T07:36:22Z">
       <class name="test.PomDemoTest">
-        <test-method status="PASS" signature="setup()[pri:0, instance:test.PomDemoTest@4c70fda8]" name="setup" is-config="true" duration-ms="11889" started-at="2019-03-24T17:23:01Z" finished-at="2019-03-24T17:23:13Z">
+        <test-method status="PASS" signature="setup()[pri:0, instance:test.PomDemoTest@cb5822]" name="setup" is-config="true" duration-ms="25725" started-at="2019-03-29T07:35:20Z" finished-at="2019-03-29T07:35:45Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setup -->
-        <test-method status="PASS" signature="postpaidLogin()[pri:0, instance:test.PomDemoTest@4c70fda8]" name="postpaidLogin" duration-ms="8847" started-at="2019-03-24T17:23:13Z" finished-at="2019-03-24T17:23:22Z">
+        <test-method status="PASS" signature="HomepagePostpaidLogin()[pri:0, instance:test.PomDemoTest@cb5822]" name="HomepagePostpaidLogin" duration-ms="13893" started-at="2019-03-29T07:35:45Z" finished-at="2019-03-29T07:35:59Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- HomepagePostpaidLogin -->
+        <test-method status="PASS" signature="Logout()[pri:0, instance:test.PomDemoTest@cb5822]" name="Logout" is-config="true" duration-ms="5757" started-at="2019-03-29T07:35:59Z" finished-at="2019-03-29T07:36:05Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Logout -->
+        <test-method status="PASS" signature="postpaidLogin()[pri:1, instance:test.PomDemoTest@cb5822]" name="postpaidLogin" duration-ms="11612" started-at="2019-03-29T07:36:05Z" finished-at="2019-03-29T07:36:17Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- postpaidLogin -->
-        <test-method status="PASS" signature="afterTest()[pri:0, instance:test.PomDemoTest@4c70fda8]" name="afterTest" is-config="true" duration-ms="2315" started-at="2019-03-24T17:23:22Z" finished-at="2019-03-24T17:23:24Z">
+        <test-method status="PASS" signature="Logout()[pri:0, instance:test.PomDemoTest@cb5822]" name="Logout" is-config="true" duration-ms="5586" started-at="2019-03-29T07:36:17Z" finished-at="2019-03-29T07:36:22Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Logout -->
+        <test-method status="PASS" signature="afterTest()[pri:0, instance:test.PomDemoTest@cb5822]" name="afterTest" is-config="true" duration-ms="158" started-at="2019-03-29T07:36:22Z" finished-at="2019-03-29T07:36:22Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- afterTest -->
